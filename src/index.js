@@ -31,9 +31,11 @@ function renderToy(toy) {
     <img src= ${toy.image} class="toy-avatar"> 
     <p>${toy.likes} likes</p>
     <button class="like-btn"> Like <3 </button>`
+  div.dataset.id = toy.id
 
   const toys = document.querySelector('div#toy-collection')
   toys.append(div)
+
 }
 
 const form = document.querySelector('form.add-toy-form')
@@ -61,6 +63,41 @@ form.addEventListener("submit", function(event) {
   event.target.reset()
 })
 
-const addLikes = document.querySelector("")
+//const likeButton = 
+
+const toys = document.querySelector("div#toy-collection")
+
+toys.addEventListener('click', function(event){
+  if (event.target.className === 'like-btn'){
+    const toyDiv = event.target.closest('div.card')
+    const pTag = toyDiv.querySelector("p")
+    const currentLikes = parseInt(pTag.textContent)
+    pTag.textContent = `${currentLikes + 1} Likes`
+
+    const toy = {likes: currentLikes + 1}
+
+    
+    fetch(`http://localhost:3000/toys/${toyDiv.dataset.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(toy)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        }
+          throw Error(`The status text is: ${response.statusText}`)
+      })
+      .then(data => {
+        pTag.textContent = `${data.likes}`
+      })
+      .catch(error => {
+        alert(error)
+      })
+
+  }
+})
 
 renderToys() 

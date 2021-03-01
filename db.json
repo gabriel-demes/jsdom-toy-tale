@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 7
     },
     {
       "id": 2,
@@ -46,12 +46,12 @@
       "id": 8,
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
+      "likes": 9
     },
     {
       "name": "Gabe",
       "image": "\"https://chemoduck.org/wp-content/uploads/2019/03/Gabev2.png\"",
-      "likes": 0,
+      "likes": 5,
       "id": 9
     }
   ]
